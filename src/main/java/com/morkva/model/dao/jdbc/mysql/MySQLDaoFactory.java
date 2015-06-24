@@ -19,6 +19,7 @@ import java.util.Map;
 /**
  * Created by koros on 06.06.2015.
  */
+@Component
 public class MySQLDaoFactory implements DAOFactory<Connection> {
 
     private String user = "vlad_korostel";

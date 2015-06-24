@@ -27,7 +27,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         initTempData();
         DAOFactory<Connection> daoFactory = new MySQLDaoFactory();
-
         Printer printer = new ConsolePrinter();
         Reader reader = new ConsoleReader();
         KickstarterApp app = new KickstarterApp(printer, reader);

@@ -4,10 +4,6 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-       <context:component-scan base-package="com.morkva"/>
-
-       <context:annotation-config/>
-
-       <!--<bean id="daoFactory" class="com.morkva.model.dao.jdbc.mysql.MySQLDaoFactory"/>-->
+       <bean id="daoFactory" class="com.morkva.model.dao.jdbc.mysql.MySQLDaoFactory" scope="singleton"/>
 
 </beans>
