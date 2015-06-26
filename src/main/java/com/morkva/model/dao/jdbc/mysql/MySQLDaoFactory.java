@@ -8,8 +8,11 @@ import com.morkva.model.dao.DAO;
 import com.morkva.model.dao.PersistException;
 import com.morkva.model.dao.DAOFactory;
 import com.morkva.model.dao.DaoCreator;
+import com.morkva.model.dao.jdbc.DataSource;
 import org.springframework.stereotype.Component;
 
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,43 +25,32 @@ import java.util.Map;
 @Component
 public class MySQLDaoFactory implements DAOFactory<Connection> {
 
-    private String user = "vlad_korostel";
-    private String password = "vlad_korostel";
-    private String url = "jdbc:mysql://tortik.asuscomm.com:3306/vlad_korostel";
-    private String driver = "com.mysql.jdbc.Driver";
-
     private Map<Class, DaoCreator> creators;
 
     public MySQLDaoFactory() {
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
         creators = new HashMap<>();
         creators.put(Quote.class, new DaoCreator<Connection>() {
             @Override
             public DAO create(Connection connection) {
-                return new MySQLQuoteDAO(MySQLDaoFactory.this, connection);
+                return new MySQLQuoteDAO(MySQLDaoFactory.this);
             }
         });
         creators.put(Category.class, new DaoCreator<Connection>() {
             @Override
             public DAO create(Connection connection) {
-                return new MySQLCategoryDao(MySQLDaoFactory.this, connection);
+                return new MySQLCategoryDao(MySQLDaoFactory.this);
             }
         });
         creators.put(Project.class, new DaoCreator<Connection>() {
             @Override
             public DAO create(Connection connection) {
-                return new MySQLProjectDao(MySQLDaoFactory.this, connection);
+                return new MySQLProjectDao(MySQLDaoFactory.this);
             }
         });
         creators.put(PaymentOption.class, new DaoCreator<Connection>() {
             @Override
             public DAO create(Connection connection) {
-                return new MySQLPaymentOptionDao(MySQLDaoFactory.this, connection);
+                return new MySQLPaymentOptionDao(MySQLDaoFactory.this);
             }
         });
 
@@ -66,11 +58,15 @@ public class MySQLDaoFactory implements DAOFactory<Connection> {
 
     @Override
     public Connection getContext() throws PersistException {
-        Connection connection;
+        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DataSource.getInstance().getConnection();
         } catch (SQLException e) {
             throw new PersistException(e);
+        } catch (PropertyVetoException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return connection;
     }

@@ -24,8 +24,8 @@ public class MySQLProjectDao extends AbstractJDBCDao<Project, Integer> {
         }
     }
 
-    public MySQLProjectDao(DAOFactory<Connection> parentFactory, Connection connection) {
-        super(parentFactory, connection);
+    public MySQLProjectDao(DAOFactory<Connection> parentFactory) {
+        super(parentFactory);
         addRelation(Project.class, "category");
     }
 

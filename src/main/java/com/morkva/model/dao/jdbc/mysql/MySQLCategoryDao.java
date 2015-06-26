@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class MySQLCategoryDao extends AbstractJDBCDao<Category, Integer> implements DAO<Category, Integer> {
 
+    public MySQLCategoryDao(DAOFactory<Connection> parentFactory) {
+        super(parentFactory);
+    }
+
     private class PersistCategory extends Category {
         public void setId(int id) {
             super.setId(id);
         }
-    }
-
-    public MySQLCategoryDao(DAOFactory<Connection> parentFactory, Connection connection) {
-        super(parentFactory, connection);
     }
 
     @Override

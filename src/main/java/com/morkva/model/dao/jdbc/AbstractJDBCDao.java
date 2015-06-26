@@ -5,10 +5,13 @@ import com.morkva.model.dao.DAOFactory;
 import com.morkva.model.dao.Identified;
 import com.morkva.model.dao.PersistException;
 
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,8 +25,12 @@ public abstract class AbstractJDBCDao<T extends Identified<PK>, PK extends Integ
     private DAOFactory<Connection> parentFactory;
     private Set<ManyToOne> relations = new HashSet<>();
 
-    public AbstractJDBCDao(DAOFactory<Connection> parentFactory, Connection connection) {
-        this.connection = connection;
+    public AbstractJDBCDao(DAOFactory<Connection> parentFactory) {
+        try {
+            this.connection = DataSource.getInstance().getConnection();
+        } catch (SQLException | IOException | PropertyVetoException e) {
+            e.printStackTrace();
+        }
         this.parentFactory = parentFactory;
     }
 

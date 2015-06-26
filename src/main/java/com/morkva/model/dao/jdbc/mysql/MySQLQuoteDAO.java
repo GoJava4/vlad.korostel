@@ -19,8 +19,8 @@ public class MySQLQuoteDAO extends AbstractJDBCDao<Quote, Integer> implements DA
 
 
 
-    public MySQLQuoteDAO(DAOFactory<Connection> parentFactory, Connection connection) {
-        super(parentFactory, connection);
+    public MySQLQuoteDAO(DAOFactory<Connection> parentFactory) {
+        super(parentFactory);
     }
 
     @Override

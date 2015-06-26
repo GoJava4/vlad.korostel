@@ -25,8 +25,8 @@ public class MySQLPaymentOptionDao extends AbstractJDBCDao<PaymentOption, Intege
         }
     }
 
-    public MySQLPaymentOptionDao(DAOFactory<Connection> parentFactory, Connection connection) {
-        super(parentFactory, connection);
+    public MySQLPaymentOptionDao(DAOFactory<Connection> parentFactory) {
+        super(parentFactory);
         addRelation(PaymentOption.class, "project");
     }
 

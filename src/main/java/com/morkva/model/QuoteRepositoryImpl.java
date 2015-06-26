@@ -1,6 +1,7 @@
 package com.morkva.model;
 
 import com.morkva.entities.Quote;
+import com.morkva.model.dao.DAO;
 import com.morkva.model.dao.DAOFactory;
 import com.morkva.model.dao.PersistException;
 
@@ -13,18 +14,19 @@ import java.util.List;
  */
 public class QuoteRepositoryImpl implements QuoteRepository {
 
-    public QuoteRepositoryImpl(DAOFactory<Connection> factory) {
-        this.factory = factory;
+    DAO<Quote, Integer> dao;
+
+    public QuoteRepositoryImpl(DAO<Quote, Integer> dao) {
+        this.dao = dao;
     }
 
-    DAOFactory<Connection> factory;
 
     @Override
     public Quote getRandomQuote() {
         Quote quote = null;
         try {
-            List list = factory.getDao(factory.getContext(), Quote.class).getByCustomQuery(
-                    "SELECT * FROM quotes ORDER BY RAND() LIMIT 0,1;");
+            List list = dao.getByCustomQuery(
+                    "SELECT * FROM quotes ORDER BY RAND() LIMIT 1;");
             quote = (Quote) list.get(0);
         } catch (SQLException e) {
             e.printStackTrace();
