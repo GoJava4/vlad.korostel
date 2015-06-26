@@ -1,7 +1,9 @@
 package com.morkva.servlets;
 
 import com.morkva.entities.Category;
+import com.morkva.entities.Project;
 import com.morkva.model.CategoryRepository;
+import com.morkva.model.ProjectRepository;
 import com.morkva.model.dao.DAOFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 /**
  * Created by koros on 26.06.2015.
@@ -29,6 +32,9 @@ public class CategoryServlet extends HttpServlet {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    ProjectRepository projectRepository;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO Parse GET data
@@ -38,6 +44,9 @@ public class CategoryServlet extends HttpServlet {
 
         Category category = categoryRepository.getById(categoryId);
 
+        List<Project> projectsForCategory = projectRepository.getProjectsForCategory(category);
+
+        req.setAttribute("projects", projectsForCategory);
         req.setAttribute("category_name", category.getName());
         req.setAttribute("category_id", categoryId);
 

@@ -9,11 +9,15 @@
        <bean id="daoFactory" class="com.morkva.model.dao.jdbc.mysql.MySQLDaoFactory" scope="singleton"/>
 
        <bean id="categoryDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLCategoryDao">
-              <constructor-arg index="0" ref="daoFactory"/>
+              <constructor-arg ref="daoFactory"/>
        </bean>
 
        <bean id="quoteDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLQuoteDAO">
-              <constructor-arg index="0" ref="daoFactory"/>
+              <constructor-arg ref="daoFactory"/>
+       </bean>
+
+       <bean id="projectDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLProjectDao">
+              <constructor-arg ref="daoFactory"/>
        </bean>
 
        <bean id="categoryRepository" class="com.morkva.model.CategoryRepositoryImpl">
@@ -22,6 +26,10 @@
 
        <bean id="quoteRepository" class="com.morkva.model.QuoteRepositoryImpl">
               <constructor-arg ref="quoteDAO"/>
+       </bean>
+
+       <bean id="projectRepository" class="com.morkva.model.ProjectRepositoryImpl">
+              <constructor-arg ref="projectDAO"/>
        </bean>
 
 </beans>

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by koros on 19.06.2015.
  */
 @Controller
-public class MainServlet extends HttpServlet {
+public class CategoriesServlet extends HttpServlet {
 
     @Autowired
     DAOFactory<Connection> daoFactory;
@@ -37,8 +38,6 @@ public class MainServlet extends HttpServlet {
 
     @Autowired
     QuoteRepository quoteRepository;
-
-    WebApplicationContext context;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,9 +50,6 @@ public class MainServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-
-        context = ContextLoader.getCurrentWebApplicationContext();
-        final AutowireCapableBeanFactory beanFactory = context.getAutowireCapableBeanFactory();
-        beanFactory.autowireBean(this);
+        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, config.getServletContext());
     }
 }
