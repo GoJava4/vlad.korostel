@@ -80,7 +80,7 @@ public class ProjectJDBCTemplate implements DAO<Project> {
     }
 
     public List<Project> getProjectsOfCategory(Category category) {
-        String sql = "SELECT * FROM projects WHERE category_id = (SELECT id FROM categories WHERE id = ?);";
+        String sql = "SELECT * FROM projects WHERE category_id = ?;";
         List<Project> projects = jdbcTemplate.query(sql, new Object[]{category.getId()}, new ProjectMapper());
         return projects;
     }
