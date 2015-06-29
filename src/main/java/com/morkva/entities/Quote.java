@@ -1,6 +1,6 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao.Identified;
+import com.morkva.model.dao_v2.Identified;
 
 /**
  * Created by vladyslav on 30.04.15.

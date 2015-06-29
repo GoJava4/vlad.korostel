@@ -6,30 +6,22 @@
 
        <context:annotation-config/>
 
-       <bean id="daoFactory" class="com.morkva.model.dao.jdbc.mysql.MySQLDaoFactory" scope="singleton"/>
-
-       <bean id="categoryDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLCategoryDao">
-              <constructor-arg ref="daoFactory"/>
+       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+              <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+              <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goit"/>
+              <property name="username" value="cakehost_goit"/>
+              <property name="password" value="975w736h"/>
        </bean>
 
-       <bean id="quoteDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLQuoteDAO">
-              <constructor-arg ref="daoFactory"/>
+       <bean id="categoryJDBCTemplate" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
+              <property name="dataSource" ref="dataSource"/>
        </bean>
 
-       <bean id="projectDAO" class="com.morkva.model.dao.jdbc.mysql.MySQLProjectDao">
-              <constructor-arg ref="daoFactory"/>
+       <bean id="quoteJDBCTemplate" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">
+              <property name="dataSource" ref="dataSource"/>
        </bean>
 
-       <bean id="categoryRepository" class="com.morkva.model.CategoryRepositoryImpl">
-              <constructor-arg ref="categoryDAO"/>
+       <bean id="projectJDBCTemplate" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">
+              <property name="dataSource" ref="dataSource"/>
        </bean>
-
-       <bean id="quoteRepository" class="com.morkva.model.QuoteRepositoryImpl">
-              <constructor-arg ref="quoteDAO"/>
-       </bean>
-
-       <bean id="projectRepository" class="com.morkva.model.ProjectRepositoryImpl">
-              <constructor-arg ref="projectDAO"/>
-       </bean>
-
 </beans>

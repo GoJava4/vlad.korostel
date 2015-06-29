@@ -1,4 +1,4 @@
-package com.morkva.model.dao;
+package com.morkva.model.dao_v2;
 
 import java.io.Serializable;
 

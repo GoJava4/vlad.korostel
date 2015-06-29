@@ -1,6 +1,6 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao.Identified;
+import com.morkva.model.dao_v2.Identified;
 
 /**
  * Created by vladyslav on 02.05.15.
@@ -8,7 +8,7 @@ import com.morkva.model.dao.Identified;
 public class Project implements Identified<Integer> {
 
     private Integer id;
-    private Category category;
+    private Integer categoryId;
     private String name;
     private String shortDescr;
     private int needMoney;
@@ -25,7 +25,7 @@ public class Project implements Identified<Integer> {
             int daysLeft,
             String history,
             String urlVideo,
-            Category category
+            Integer categoryId
     ) {
         this.name = name;
         this.shortDescr = shortDescr;
@@ -34,7 +34,7 @@ public class Project implements Identified<Integer> {
         this.daysLeft = daysLeft;
         this.history = history;
         this.urlVideo = urlVideo;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 
     public Project() {
@@ -48,12 +48,12 @@ public class Project implements Identified<Integer> {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getShortDescr() {
