@@ -1,7 +1,7 @@
 package com.morkva.model.dao_v2.templates;
 
 import com.morkva.entities.Category;
-import com.morkva.model.dao_v2.DAO;
+import com.morkva.model.dao_v2.CategoryDAO;
 import com.morkva.model.dao_v2.mappers.CategoryMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by koros on 29.06.2015.
  */
-public class CategoryJDBCTemplate implements DAO<Category> {
+public class CategoryJDBCTemplate implements CategoryDAO {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
@@ -24,7 +24,7 @@ public class CategoryJDBCTemplate implements DAO<Category> {
 
     @Override
     public void create(Category entity) {
-        String sql = "INSERT INTO categories(name) VALUE (?);";
+        String sql = "INSERT INTO categories(`name`) VALUE (?);";
 
         jdbcTemplate.update(sql, entity.getName());
         return;
@@ -52,6 +52,7 @@ public class CategoryJDBCTemplate implements DAO<Category> {
         return;
     }
 
+    @Override
     public List<Category> getAll() {
         String sql = "SELECT * FROM categories;";
         List<Category> categories = jdbcTemplate.query(sql, new CategoryMapper());

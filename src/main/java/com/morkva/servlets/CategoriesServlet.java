@@ -1,6 +1,6 @@
 package com.morkva.servlets;
 
-import com.morkva.model.dao_v2.templates.CategoryJDBCTemplate;
+import com.morkva.services.CategoryService;
 import com.morkva.services.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +23,13 @@ public class CategoriesServlet extends HttpServlet {
     QuoteService quoteService;
 
     @Autowired
-    CategoryJDBCTemplate categoryJDBCTemplate;
+    CategoryService categoryService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setAttribute("quote", quoteService.getRandom());
-        req.setAttribute("list", categoryJDBCTemplate.getAll());
+        req.setAttribute("list", categoryService.getAll());
         req.getRequestDispatcher("jsp/categories.jsp").forward(req, resp);
     }
 
