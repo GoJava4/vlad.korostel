@@ -2,7 +2,6 @@ package com.morkva.servlets;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao.DAOFactory;
 import com.morkva.model.dao_v2.templates.CategoryJDBCTemplate;
 import com.morkva.model.dao_v2.templates.ProjectJDBCTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
