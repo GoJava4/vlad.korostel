@@ -2,8 +2,8 @@ package com.morkva.servlets;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.templates.CategoryJDBCTemplate;
-import com.morkva.model.dao_v2.templates.ProjectJDBCTemplate;
+import com.morkva.services.CategoryService;
+import com.morkva.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
@@ -25,10 +25,10 @@ import java.util.List;
 public class CategoryServlet extends HttpServlet {
 
     @Autowired
-    ProjectJDBCTemplate projectJDBCTemplate;
+    ProjectService projectService;
 
     @Autowired
-    CategoryJDBCTemplate categoryJDBCTemplate;
+    CategoryService categoryService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,9 +37,9 @@ public class CategoryServlet extends HttpServlet {
         req.setAttribute("asd", parameter);
         Integer categoryId = Integer.parseInt(parameter);
 
-        Category category = categoryJDBCTemplate.getById(categoryId);
+        Category category = categoryService.getById(categoryId);
 
-        List<Project> projectsForCategory = projectJDBCTemplate.getProjectsOfCategory(category);
+        List<Project> projectsForCategory = projectService.getProjectsOfCategory(category);
 
         req.setAttribute("projects", projectsForCategory);
         req.setAttribute("category_name", category.getName());

@@ -107,28 +107,6 @@ public class Project implements Identified<Integer> {
         this.urlVideo = urlVideo;
     }
 
-    public String getFullInfo() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.getName()).append("\n");
-        builder.append("	Short Description: ").append(this.getShortDescr()).append("\n");
-        builder.append("	Need money: ").append(this.getNeedMoney()).append("\n");
-        builder.append("	Current money: ").append(this.getCurrentMoney()).append("\n");
-        builder.append("	Days left: ").append(this.getDaysLeft()).append("\n");
-        builder.append("	History: ").append(this.getHistory()).append("\n");
-        builder.append("	Video URL: ").append(this.getUrlVideo()).append("\n");
-        return builder.toString();
-    }
-
-    public String getShortInfo() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.getName() + "\n");
-        builder.append("	Short Description: " + this.getShortDescr() + "\n");
-        builder.append("	Need money: " + this.getNeedMoney() + "\n");
-        builder.append("	Current money: " + this.getCurrentMoney() + "\n");
-        builder.append("	Days left: " + this.getDaysLeft() + "\n");
-        return builder.toString();
-    }
-
     @Override
     public Integer getId() {
         return id;

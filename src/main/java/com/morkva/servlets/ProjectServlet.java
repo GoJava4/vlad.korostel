@@ -1,7 +1,7 @@
 package com.morkva.servlets;
 
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.templates.ProjectJDBCTemplate;
+import com.morkva.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class ProjectServlet extends HttpServlet {
 
     @Autowired
-    ProjectJDBCTemplate projectJDBCTemplate;
+    ProjectService projectService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +33,7 @@ public class ProjectServlet extends HttpServlet {
             return;
         }
         Integer projectId = Integer.parseInt(parameter);
-        Project project = projectJDBCTemplate.getById(projectId);
+        Project project = projectService.getById(projectId);
 
         session.setAttribute("current_project", project);
 
@@ -59,7 +59,7 @@ public class ProjectServlet extends HttpServlet {
     private void donate(Project project, Integer donateCount) {
         if (donateCount != null) {
             project.setCurrentMoney(project.getCurrentMoney() + donateCount);
-            projectJDBCTemplate.update(project);
+            projectService.update(project);
         }
     }
 

@@ -7,22 +7,24 @@
        <context:annotation-config/>
        <context:component-scan base-package="com.morkva"/>
 
-       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+              <property name="maxActive" value="10"/>
+              <property name="maxWait" value="10"/>
               <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
               <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goit"/>
               <property name="username" value="cakehost_goit"/>
               <property name="password" value="975w736h"/>
        </bean>
 
-       <bean id="categoryJDBCTemplate" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
+       <bean id="categoryDAO" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
               <property name="dataSource" ref="dataSource"/>
        </bean>
 
-       <bean id="quoteJDBCTemplate" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">
+       <bean id="quoteDAO" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">
               <property name="dataSource" ref="dataSource"/>
        </bean>
 
-       <bean id="projectJDBCTemplate" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">
+       <bean id="projectDAO" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">
               <property name="dataSource" ref="dataSource"/>
        </bean>
 

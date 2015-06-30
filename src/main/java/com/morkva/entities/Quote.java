@@ -11,7 +11,7 @@ public class Quote implements Identified<Integer> {
     private String value;
     private String author;
 
-    public Quote(int id, String value, String author) {
+    public Quote(String value, String author) {
         this.value = value;
         this.author = author;
     }

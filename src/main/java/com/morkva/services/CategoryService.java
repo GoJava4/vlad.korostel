@@ -17,4 +17,8 @@ public class CategoryService {
     public List<Category> getAll() {
         return categoryDAO.getAll();
     }
+
+    public Category getById(Integer categoryId) {
+        return categoryDAO.getById(categoryId);
+    }
 }

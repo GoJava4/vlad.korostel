@@ -3,6 +3,7 @@ package com.morkva.model.dao_v2.templates;
 import com.morkva.entities.Quote;
 import com.morkva.model.dao_v2.QuoteDAO;
 import com.morkva.model.dao_v2.mappers.QuoteMapper;
+import com.morkva.model.dao_v2.utils.FixedNullJdbcTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -18,7 +19,8 @@ public class QuoteJDBCTemplate implements QuoteDAO {
     @Override
     public void setDataSource(DataSource ds) {
         this.dataSource = ds;
-        this.jdbcTemplate = new JdbcTemplate(ds);
+//        this.jdbcTemplate = new JdbcTemplate(ds);
+        this.jdbcTemplate = new FixedNullJdbcTemplate(ds);
     }
 
     @Override
@@ -32,7 +34,16 @@ public class QuoteJDBCTemplate implements QuoteDAO {
     public Quote getById(Integer id) {
         String sql = "SELECT * FROM quotes WHERE id = ?;";
 
+//        //WTF ???? WHY ???? O_o (01.07.2015 - 00:58)
+//        try {
+//            quote = jdbcTemplate.queryForObject(sql, new Object[]{id}, new QuoteMapper());
+//        } catch (EmptyResultDataAccessException ignored) {
+//            //TODO Решить эту ***** правильно!
+//        }
+//        return quote;
+
         Quote quote = jdbcTemplate.queryForObject(sql, new Object[]{id}, new QuoteMapper());
+
         return quote;
     }
 

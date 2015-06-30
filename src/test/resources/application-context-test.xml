@@ -7,11 +7,13 @@
        <context:annotation-config/>
        <context:component-scan base-package="com.morkva"/>
 
-       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+              <property name="maxActive" value="10"/>
+              <property name="maxWait" value="10"/>
               <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-              <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goit"/>
-              <property name="username" value="cakehost_goit"/>
-              <property name="password" value="975w736h"/>
+              <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goittst"/>
+              <property name="username" value="cakehost_goittst"/>
+              <property name="password" value="jqbueb72"/>
        </bean>
 
        <bean id="categoryJDBCTemplate" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
