@@ -38,7 +38,7 @@ public class QuoteJDBCTemplate implements QuoteDAO {
 //        try {
 //            quote = jdbcTemplate.queryForObject(sql, new Object[]{id}, new QuoteMapper());
 //        } catch (EmptyResultDataAccessException ignored) {
-//            //TODO Решить эту ***** правильно!
+//            //TODO Р РµС€РёС‚СЊ СЌС‚Сѓ ***** РїСЂР°РІРёР»СЊРЅРѕ!
 //        }
 //        return quote;
 
