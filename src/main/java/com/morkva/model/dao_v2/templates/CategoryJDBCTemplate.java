@@ -5,7 +5,6 @@ import com.morkva.model.dao_v2.CategoryDAO;
 import com.morkva.model.dao_v2.mappers.CategoryMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -13,13 +12,11 @@ import java.util.List;
  */
 public class CategoryJDBCTemplate implements CategoryDAO {
 
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void setDataSource(DataSource ds) {
-        this.dataSource = ds;
-        this.jdbcTemplate = new JdbcTemplate(ds);
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override

@@ -1,13 +1,13 @@
 package com.morkva.model.dao_v2;
 
-import javax.sql.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * Created by koros on 29.06.2015.
  */
 public interface DAO<T extends Identified> {
 
-    void setDataSource(DataSource ds);
+    void setJdbcTemplate(JdbcTemplate jdbcTemplate);
     void create(T entity);
     T getById(Integer id);
     void update(T entity);
