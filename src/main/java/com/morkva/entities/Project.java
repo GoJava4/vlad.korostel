@@ -17,26 +17,6 @@ public class Project implements Identified<Integer> {
     private String history;
     private String urlVideo;
 
-    public Project(
-            String name,
-            String shortDescr,
-            int needMoney,
-            int currentMoney,
-            int daysLeft,
-            String history,
-            String urlVideo,
-            Integer categoryId
-    ) {
-        this.name = name;
-        this.shortDescr = shortDescr;
-        this.needMoney = needMoney;
-        this.currentMoney = currentMoney;
-        this.daysLeft = daysLeft;
-        this.history = history;
-        this.urlVideo = urlVideo;
-        this.categoryId = categoryId;
-    }
-
     public Project() {
     }
 
@@ -70,9 +50,6 @@ public class Project implements Identified<Integer> {
 
     public void setNeedMoney(int needMoney) {
         this.needMoney = needMoney;
-        if (getNeedMoney() < 0) {
-            this.needMoney = 0;
-        }
     }
 
     public int getCurrentMoney() {

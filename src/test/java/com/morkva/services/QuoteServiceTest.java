@@ -2,11 +2,13 @@ package com.morkva.services;
 
 import com.morkva.model.dao_v2.QuoteDAO;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -26,7 +28,12 @@ public class QuoteServiceTest {
     QuoteDAO quoteDAO;
 
     @InjectMocks
-    QuoteService quoteService = new QuoteService();
+    QuoteService quoteService;
+
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void testGetRandom() throws Exception {

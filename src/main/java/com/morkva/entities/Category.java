@@ -10,10 +10,6 @@ public class Category implements Identified<Integer> {
     private Integer id;
     private String name;
 
-    public Category(Integer id, String name) {
-        this.name = name;
-    }
-
     public Category() {
     }
 
@@ -37,14 +33,5 @@ public class Category implements Identified<Integer> {
     protected void setId(Integer id) {
         this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "name='" + name + '\'' +
-                '}';
-    }
-
-
 
 }

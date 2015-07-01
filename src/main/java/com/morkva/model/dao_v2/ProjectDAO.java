@@ -10,7 +10,5 @@ import java.util.List;
  */
 public interface ProjectDAO extends DAO<Project> {
 
-
-
     List<Project> getProjectsOfCategory(Category category);
 }

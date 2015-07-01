@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <quotes ID="1" value="Quote 1" author="Author 1"/>
-    <quotes ID="2" value="Quote 2" author="Author 2"/>
-    <quotes ID="3" value="Quote 3" author="Author 3"/>
-
-    <categories id="1"
-                name="name 1"/>
-    <categories id="2"
-                name="name 2"/>
+    <categories id="1" name="name 1"/>
+    <categories id="2" name="name 2"/>
+    <categories id="3" name="name 3"/>
 
     <projects id="1"
               name="name 1"
@@ -44,14 +39,5 @@
               days_left="30"
               history="history 4"
               video_url="Video Url 4"
-              category_id="2"/>
-    <projects id="5"
-              name="name 5"
-              short_description="Short Descr 5"
-              current_money="1000"
-              need_money="5000"
-              days_left="30"
-              history="history 5"
-              video_url="Video Url 5"
               category_id="2"/>
 </dataset>

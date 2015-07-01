@@ -38,8 +38,7 @@
 
        <bean id="categoryService" class="com.morkva.services.CategoryService"/>
 
-       <bean id="quoteService" class="com.morkva.services.QuoteService">
-              <property name="quoteDAO" ref="quoteDAO"/>
-       </bean>
+       <bean id="quoteService" class="com.morkva.services.QuoteService"/>
 
+       <bean id="projectService" class="com.morkva.services.ProjectService"/>
 </beans>

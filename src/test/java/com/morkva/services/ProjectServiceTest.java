@@ -5,21 +5,27 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
+import com.morkva.model.dao_v2.ProjectDAO;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * Created by koros on 30.06.2015.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context-test.xml"})
 @TestExecutionListeners({
         DependencyInjectionTestExecutionListener.class,
@@ -28,33 +34,36 @@ import java.util.List;
 @DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
 public class ProjectServiceTest {
 
-    @Autowired
+    @Mock
+    ProjectDAO projectDAO;
+
+    @InjectMocks
     ProjectService projectService;
 
-    @Autowired
-    CategoryService categoryService;
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void testGetById() {
-        Project project = projectService.getById(1);
-        Assert.assertEquals(new Integer(1), project.getId());
-        Assert.assertEquals("name 1", project.getName());
+        Project project = new Project();
+        Mockito.when(projectDAO.getById(1)).thenReturn(project);
+        Assert.assertEquals(project, projectService.getById(1));
     }
 
 
     @Test
-    public void testGetProjectsOfCategory() throws Exception {
-        Category category = categoryService.getById(1);
-        List<Project> projects = projectService.getProjectsOfCategory(category);
-        Assert.assertEquals(2, projects.size());
+    public void testGetProjectsOfCategory() {
+        Category category = new Category();
+        Mockito.when(projectDAO.getProjectsOfCategory(category)).thenReturn(new LinkedList<>(Collections.singletonList(new Project())));
+        Assert.assertTrue(projectService.getProjectsOfCategory(category).size() == 1);
     }
 
     @Test
-    public void testUpdate() throws Exception {
-        Project project = projectService.getById(1);
-        project.setName("New name");
+    public void testUpdate() {
+        Project project = new Project();
         projectService.update(project);
-        project = projectService.getById(1);
-        Assert.assertEquals("New name", project.getName());
+        Mockito.verify(projectDAO).update(project);
     }
 }

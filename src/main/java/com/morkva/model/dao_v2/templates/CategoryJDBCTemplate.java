@@ -24,7 +24,6 @@ public class CategoryJDBCTemplate implements CategoryDAO {
         String sql = "INSERT INTO categories(`name`) VALUE (?);";
 
         jdbcTemplate.update(sql, entity.getName());
-        return;
     }
 
     @Override
@@ -39,14 +38,12 @@ public class CategoryJDBCTemplate implements CategoryDAO {
     public void update(Category entity) {
         String sql = "UPDATE categories SET `name` = ? WHERE id = ?;";
         jdbcTemplate.update(sql, entity.getName(), entity.getId());
-        return;
     }
 
     @Override
     public void delete(Category entity) {
         String sql = "DELETE FROM categories WHERE id = ?;";
         jdbcTemplate.update(sql, entity.getId());
-        return;
     }
 
     @Override

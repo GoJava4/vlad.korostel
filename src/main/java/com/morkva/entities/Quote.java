@@ -37,11 +37,6 @@ public class Quote implements Identified<Integer> {
     }
 
     @Override
-    public String toString() {
-        return "\"" + value + "\"" + " (" + author + ")";
-    }
-
-    @Override
     public Integer getId() {
         return id;
     }

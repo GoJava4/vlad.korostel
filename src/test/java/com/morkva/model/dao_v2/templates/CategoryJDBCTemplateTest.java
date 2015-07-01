@@ -5,7 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
-import com.morkva.entities.Quote;
+import com.morkva.entities.Category;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +14,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+
+import java.util.List;
 
 /**
  * Created by koros on 01.07.2015.
@@ -24,59 +26,55 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
         DependencyInjectionTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
-@DatabaseSetup(value = "classpath:quoteTest/sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
-public class QuoteJDBCTemplateTest {
+@DatabaseSetup(value = "classpath:categoryTest/sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
+public class CategoryJDBCTemplateTest {
 
     @Autowired
-    QuoteJDBCTemplate quoteJDBCTemplate;
-
+    CategoryJDBCTemplate categoryJDBCTemplate;
 
     @Test
     @ExpectedDatabase(
-            value = "classpath:quoteTest/expectedCreateData.xml",
+            value = "classpath:categoryTest/expectedCreateData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "quotes")
+            table = "categories")
     public void testCreate() throws Exception {
-        Quote quote = new Quote("New Value", "New Author");
-        quoteJDBCTemplate.create(quote);
+        Category category = new Category("New Name");
+        categoryJDBCTemplate.create(category);
     }
 
     @Test
     public void testGetById() throws Exception {
-        Quote quote = quoteJDBCTemplate.getById(1);
-        Assert.assertNotNull(quote);
-    }
-
-    @Test
-    public void shouldNull_whenIdNotExist() {
-        Quote quote = quoteJDBCTemplate.getById(5);
-        Assert.assertNull(quote);
+        Category category = categoryJDBCTemplate.getById(1);
+        Assert.assertEquals("name 1", category.getName());
     }
 
     @Test
     public void testUpdate() throws Exception {
-        Quote quote = quoteJDBCTemplate.getById(1);
-        String newValue = "New value";
-        quote.setValue(newValue);
-        quoteJDBCTemplate.update(quote);
-        quote = quoteJDBCTemplate.getById(1);
-        Assert.assertEquals(newValue, quote.getValue());
+        Category category = categoryJDBCTemplate.getById(2);
+        String newName = "New Name";
+        category.setName(newName);
+        categoryJDBCTemplate.update(category);
+        category = categoryJDBCTemplate.getById(2);
+        Assert.assertEquals(newName, category.getName());
     }
 
     @Test
-    @ExpectedDatabase(
-            value = "classpath:quoteTest/expectedDeleteData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "quotes"
-    )
     public void testDelete() throws Exception {
-        Quote quote = quoteJDBCTemplate.getById(3);
-        quoteJDBCTemplate.delete(quote);
+        List<Category> all = categoryJDBCTemplate.getAll();
+        int oldSize = all.size();
+
+        Category category = categoryJDBCTemplate.getById(3);
+        categoryJDBCTemplate.delete(category);
+
+        all = categoryJDBCTemplate.getAll();
+        int newSize = all.size();
+
+        Assert.assertEquals(oldSize - 1, newSize);
     }
 
     @Test
-    public void testGetRandom() throws Exception {
-        Quote quote = quoteJDBCTemplate.getRandom();
-        Assert.assertNotNull(quote);
+    public void testGetAll() throws Exception {
+        List<Category> all = categoryJDBCTemplate.getAll();
+        Assert.assertEquals(3, all.size());
     }
 }
