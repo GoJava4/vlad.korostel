@@ -9,14 +9,8 @@ public class PaymentOption implements Identified<Integer> {
 
     private Integer id;
     private String description;
-    private Integer amount;
-    private Project project;
-
-    public PaymentOption(String description, Integer amount, Project project) {
-        this.description = description;
-        this.amount = amount;
-        this.project = project;
-    }
+    private Integer value;
+    private Integer projectId;
 
     public PaymentOption() {
     }
@@ -25,24 +19,24 @@ public class PaymentOption implements Identified<Integer> {
         return description;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Integer getValue() {
+        return value;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
-    public Project getProject() {
-        return project;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
     @Override

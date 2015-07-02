@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 /**
  * Created by koros on 29.06.2015.
  */
-public interface DAO<T extends Identified> {
+public interface Dao<T extends Identified> {
 
     void setJdbcTemplate(JdbcTemplate jdbcTemplate);
     void create(T entity);

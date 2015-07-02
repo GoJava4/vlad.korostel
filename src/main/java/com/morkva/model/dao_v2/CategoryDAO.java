@@ -7,6 +7,6 @@ import java.util.List;
 /**
  * Created by koros on 30.06.2015.
  */
-public interface CategoryDAO extends DAO<Category> {
+public interface CategoryDao extends Dao<Category> {
     List<Category> getAll();
 }

@@ -1,14 +1,14 @@
 package com.morkva.model.dao_v2.templates;
 
 import com.morkva.entities.Quote;
-import com.morkva.model.dao_v2.QuoteDAO;
+import com.morkva.model.dao_v2.QuoteDao;
 import com.morkva.model.dao_v2.mappers.QuoteMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  * Created by koros on 29.06.2015.
  */
-public class QuoteJDBCTemplate implements QuoteDAO {
+public class QuoteJDBCTemplate implements QuoteDao {
 
     private JdbcTemplate jdbcTemplate;
 

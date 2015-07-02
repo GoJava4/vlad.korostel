@@ -1,40 +1,25 @@
 package com.morkva.services;
 
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DatabaseOperation;
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.morkva.entities.Category;
-import com.morkva.model.dao_v2.CategoryDAO;
+import com.morkva.model.dao_v2.CategoryDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import java.util.LinkedList;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by koros on 30.06.2015.
  */
-@RunWith(MockitoJUnitRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-test.xml"})
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-        DbUnitTestExecutionListener.class
-})
-@DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
 public class CategoryServiceTest {
 
     @Mock
-    CategoryDAO categoryDAO;
+    CategoryDao categoryDAO;
 
     @InjectMocks
     CategoryService categoryService;

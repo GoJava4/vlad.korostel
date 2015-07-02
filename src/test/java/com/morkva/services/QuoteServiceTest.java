@@ -1,6 +1,6 @@
 package com.morkva.services;
 
-import com.morkva.model.dao_v2.QuoteDAO;
+import com.morkva.model.dao_v2.QuoteDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 public class QuoteServiceTest {
 
     @Mock
-    QuoteDAO quoteDAO;
+    QuoteDao quoteDAO;
 
     @InjectMocks
     QuoteService quoteService;

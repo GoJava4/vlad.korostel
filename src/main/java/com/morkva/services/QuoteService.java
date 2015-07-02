@@ -1,7 +1,7 @@
 package com.morkva.services;
 
 import com.morkva.entities.Quote;
-import com.morkva.model.dao_v2.QuoteDAO;
+import com.morkva.model.dao_v2.QuoteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class QuoteService {
 
     @Autowired
-    QuoteDAO quoteDAO;
+    QuoteDao quoteDAO;
 
     public Quote getRandom() {
         return quoteDAO.getRandom();

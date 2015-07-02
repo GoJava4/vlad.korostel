@@ -1,7 +1,7 @@
 package com.morkva.model.dao_v2.templates;
 
 import com.morkva.entities.Category;
-import com.morkva.model.dao_v2.CategoryDAO;
+import com.morkva.model.dao_v2.CategoryDao;
 import com.morkva.model.dao_v2.mappers.CategoryMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by koros on 29.06.2015.
  */
-public class CategoryJDBCTemplate implements CategoryDAO {
+public class CategoryJDBCTemplate implements CategoryDao {
 
     private JdbcTemplate jdbcTemplate;
 

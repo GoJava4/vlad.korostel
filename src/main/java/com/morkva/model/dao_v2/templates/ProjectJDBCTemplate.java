@@ -2,7 +2,7 @@ package com.morkva.model.dao_v2.templates;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.ProjectDAO;
+import com.morkva.model.dao_v2.ProjectDao;
 import com.morkva.model.dao_v2.mappers.ProjectMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by koros on 29.06.2015.
  */
-public class ProjectJDBCTemplate implements ProjectDAO {
+public class ProjectJDBCTemplate implements ProjectDao {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -38,7 +38,6 @@ public class ProjectJDBCTemplate implements ProjectDAO {
         };
 
         jdbcTemplate.update(sql, args);
-        return;
     }
 
     @Override
@@ -66,14 +65,12 @@ public class ProjectJDBCTemplate implements ProjectDAO {
         };
 
         jdbcTemplate.update(sql, args);
-        return;
     }
 
     @Override
     public void delete(Project entity) {
         String sql = "DELETE FROM projects WHERE id = ?;";
         jdbcTemplate.update(sql, entity.getId());
-        return;
     }
 
     @Override

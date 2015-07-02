@@ -2,7 +2,7 @@ package com.morkva.services;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.ProjectDAO;
+import com.morkva.model.dao_v2.ProjectDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 public class ProjectService {
 
     @Autowired
-    ProjectDAO projectDAO;
+    ProjectDao projectDAO;
 
     public List<Project> getProjectsOfCategory(Category category) {
         return projectDAO.getProjectsOfCategory(category);

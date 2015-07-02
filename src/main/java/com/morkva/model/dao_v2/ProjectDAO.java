@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by koros on 30.06.2015.
  */
-public interface ProjectDAO extends DAO<Project> {
+public interface ProjectDao extends Dao<Project> {
 
     List<Project> getProjectsOfCategory(Category category);
 }

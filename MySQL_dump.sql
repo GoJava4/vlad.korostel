@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS payment_options
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   description LONGTEXT NOT NULL,
-  amount INT NOT NULL,
+  value INT NOT NULL,
   project_id INT NOT NULL,
   FOREIGN KEY (project_id) REFERENCES projects(id)
 )ENGINE = InnoDB;
@@ -26,6 +26,14 @@ CREATE TABLE IF NOT EXISTS projects
   category_id INTEGER,
 
   FOREIGN KEY (category_id) REFERENCES categories(id)
+)ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS payment_options (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  value INTEGER,
+  description TEXT,
+  project_id INTEGER,
+  FOREIGN KEY (project_id) REFERENCES projects(id)
 )ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS quotes

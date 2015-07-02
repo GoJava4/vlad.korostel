@@ -5,7 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.ProjectDAO;
+import com.morkva.model.dao_v2.ProjectDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +35,7 @@ import java.util.LinkedList;
 public class ProjectServiceTest {
 
     @Mock
-    ProjectDAO projectDAO;
+    ProjectDao projectDAO;
 
     @InjectMocks
     ProjectService projectService;
