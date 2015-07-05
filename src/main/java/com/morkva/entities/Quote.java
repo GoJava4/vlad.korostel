@@ -3,6 +3,8 @@ package com.morkva.entities;
 import com.morkva.model.dao_v2.Identified;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by vladyslav on 30.04.15.
@@ -10,7 +12,10 @@ import javax.persistence.Entity;
 @Entity
 public class Quote implements Identified<Integer> {
 
+    @Id
+    @GeneratedValue
     private Integer id;
+
     private String value;
     private String author;
 
