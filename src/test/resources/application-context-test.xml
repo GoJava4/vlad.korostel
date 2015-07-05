@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
        <context:annotation-config/>
        <context:component-scan base-package="com.morkva"/>
@@ -16,29 +16,45 @@
               <property name="password" value="jqbueb72"/>
        </bean>
 
-       <bean id="nullFixedJdbcTemplate" class="com.morkva.model.dao_v2.utils.FixedNullJdbcTemplate">
-              <constructor-arg ref="dataSource"/>
+       <!--Не нужно пока-->
+       <!--<bean id="nullFixedJdbcTemplate" class="com.morkva.model.dao_v2.utils.FixedNullJdbcTemplate">-->
+       <!--<constructor-arg ref="dataSource"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="categoryDAO" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">-->
+       <!--<property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="quoteDAO" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">-->
+       <!--<property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="projectDAO" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">-->
+       <!--<property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="paymentOptionDao" class="com.morkva.model.dao_v2.templates.PaymentOptionJDBCTemplate">-->
+       <!--<property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>-->
+       <!--</bean>-->
+
+       <!--<bean id="categoryService" class="com.morkva.services.CategoryService"/>-->
+
+       <!--<bean id="quoteService" class="com.morkva.services.QuoteService"/>-->
+
+       <!--<bean id="projectService" class="com.morkva.services.ProjectService"/>-->
+
+       <!--<bean id="paymentOptionService" class="com.morkva.services.PaymentOptionService"/>-->
+       <!-- - - - - - - - - -->
+
+       <tx:annotation-driven />
+       <bean id="transactionManager"
+             class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+              <property name="sessionFactory" ref="sessionFactory" />
        </bean>
 
-       <bean id="categoryDAO" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
+       <bean id="sessionFactory"
+             class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+              <property name="dataSource" ref="dataSource" />
+              <property name="configLocation" value="classpath:hibernate-test.cfg.xml"/>
        </bean>
-
-       <bean id="quoteDAO" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="projectDAO" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="paymentOptionDao" class="com.morkva.model.dao_v2.templates.PaymentOptionJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="categoryService" class="com.morkva.services.CategoryService"/>
-
-       <bean id="quoteService" class="com.morkva.services.QuoteService"/>
-
-       <bean id="projectService" class="com.morkva.services.ProjectService"/>
 </beans>

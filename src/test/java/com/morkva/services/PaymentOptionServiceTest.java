@@ -2,7 +2,7 @@ package com.morkva.services;
 
 import com.morkva.entities.PaymentOption;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.PaymentOptionDao;
+import com.morkva.model.dao_v3.PaymentOptionDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

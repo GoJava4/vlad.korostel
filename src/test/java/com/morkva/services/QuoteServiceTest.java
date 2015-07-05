@@ -1,6 +1,6 @@
 package com.morkva.services;
 
-import com.morkva.model.dao_v2.QuoteDao;
+import com.morkva.model.dao_v3.QuoteDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

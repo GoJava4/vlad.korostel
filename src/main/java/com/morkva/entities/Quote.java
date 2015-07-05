@@ -1,7 +1,5 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao_v2.Identified;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,7 +8,7 @@ import javax.persistence.Id;
  * Created by vladyslav on 30.04.15.
  */
 @Entity
-public class Quote implements Identified<Integer> {
+public class Quote {
 
     @Id
     @GeneratedValue
@@ -44,7 +42,6 @@ public class Quote implements Identified<Integer> {
         this.author = author;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }

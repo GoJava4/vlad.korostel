@@ -1,4 +1,5 @@
-package com.morkva.model.dao_v2;
+package com.morkva.model.dao_v3;
+
 
 import com.morkva.entities.Quote;
 

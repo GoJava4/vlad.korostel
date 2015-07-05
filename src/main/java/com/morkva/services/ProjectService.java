@@ -2,14 +2,16 @@ package com.morkva.services;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.ProjectDao;
+import com.morkva.model.dao_v3.ProjectDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by koros on 30.06.2015.
  */
+@Service("projectService")
 public class ProjectService {
 
     @Autowired
