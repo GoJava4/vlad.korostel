@@ -84,7 +84,7 @@ public class ProjectDaoImplTest {
             table = "projects"
     )
     public void testDelete() throws Exception {
-        Project project = projectDao.getById(1);
+        Project project = projectDao.getById(4);
         projectDao.delete(project);
     }
 
