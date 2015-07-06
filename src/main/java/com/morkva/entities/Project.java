@@ -20,11 +20,21 @@ public class Project {
     private Category category;
 
     private String name;
+
+    @Column(name = "short_description")
     private String shortDescr;
+
+    @Column(name = "need_money")
     private int needMoney;
+
+    @Column(name = "current_money")
     private int currentMoney;
+
+    @Column(name = "days_left")
     private int daysLeft;
     private String history;
+
+    @Column(name = "url_video")
     private String urlVideo;
 
     public Project() {

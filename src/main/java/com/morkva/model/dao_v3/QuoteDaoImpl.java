@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by koros on 05.07.2015.
  */
 @Repository("quoteDao")
+@Transactional
 public class QuoteDaoImpl extends AbstractDao<Quote> implements QuoteDao {
 
 
@@ -17,29 +18,8 @@ public class QuoteDaoImpl extends AbstractDao<Quote> implements QuoteDao {
     }
 
     @Override
-    @Transactional
     public Quote getRandom() {
         Session currentSession = sessionFactory.getCurrentSession();
         return (Quote) currentSession.createSQLQuery("SELECT * FROM quotes ORDER BY RAND() LIMIT 1").addEntity(Quote.class).uniqueResult();
-    }
-
-    @Override
-    public void create(Quote entity) {
-
-    }
-
-    @Override
-    public Quote getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public void update(Quote entity) {
-
-    }
-
-    @Override
-    public void delete(Quote entity) {
-
     }
 }

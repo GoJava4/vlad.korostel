@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by koros on 06.07.2015.
  */
 @Repository("projectDao")
+@Transactional
 public class ProjectDaoImpl extends AbstractDao<Project> implements ProjectDao {
 
     public ProjectDaoImpl() {

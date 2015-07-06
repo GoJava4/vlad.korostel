@@ -5,6 +5,7 @@ import com.morkva.entities.Project;
 import com.morkva.model.dao_v3.ProjectDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by koros on 30.06.2015.
  */
 @Service("projectService")
+@Transactional
 public class ProjectService {
 
     @Autowired
