@@ -1,11 +1,14 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao_v3.hibernate;
 
+import com.morkva.model.dao_v3.Dao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by koros on 06.07.2015.
  */
+@Transactional
 public class AbstractDao<T> implements Dao<T> {
 
     @Autowired

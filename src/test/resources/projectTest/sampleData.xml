@@ -10,7 +10,7 @@
               need_money="5000"
               days_left="30"
               history="history 1"
-              video_url="Video Url 1"
+              url_video="Video Url 1"
               category_id="1"/>
     <projects id="2"
               name="name 2"
@@ -19,7 +19,7 @@
               need_money="1000"
               days_left="30"
               history="history 2"
-              video_url="Video Url 2"
+              url_video="Video Url 2"
               category_id="1"/>
     <projects id="3"
               name="name 3"
@@ -28,7 +28,7 @@
               need_money="19000"
               days_left="30"
               history="history 3"
-              video_url="Video Url 3"
+              url_video="Video Url 3"
               category_id="2"/>
     <projects id="4"
               name="name 4"
@@ -37,6 +37,6 @@
               need_money="2000"
               days_left="30"
               history="history 4"
-              video_url="Video Url 4"
+              url_video="Video Url 4"
               category_id="2"/>
 </dataset>

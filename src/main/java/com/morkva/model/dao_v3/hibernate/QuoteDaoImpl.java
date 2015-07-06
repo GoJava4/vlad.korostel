@@ -1,6 +1,7 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao_v3.hibernate;
 
 import com.morkva.entities.Quote;
+import com.morkva.model.dao_v3.QuoteDao;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

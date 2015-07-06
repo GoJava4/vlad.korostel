@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface ProjectDao extends Dao<Project> {
 
-    List getProjectsOfCategory(Category category);
+    List<Project> getProjectsOfCategory(Category category);
 
 }

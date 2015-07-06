@@ -1,7 +1,8 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao_v3.hibernate;
 
 import com.morkva.entities.PaymentOption;
 import com.morkva.entities.Project;
+import com.morkva.model.dao_v3.PaymentOptionDao;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;

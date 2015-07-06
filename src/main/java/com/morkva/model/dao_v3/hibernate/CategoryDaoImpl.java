@@ -1,6 +1,7 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao_v3.hibernate;
 
 import com.morkva.entities.Category;
+import com.morkva.model.dao_v3.CategoryDao;
 import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
