@@ -1,3 +1,7 @@
+###################################
+# CREATE TABLES
+###################################
+
 CREATE TABLE IF NOT EXISTS categories
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

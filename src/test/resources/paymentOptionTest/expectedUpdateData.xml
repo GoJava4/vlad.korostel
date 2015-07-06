@@ -9,7 +9,7 @@
               need_money="5000"
               days_left="30"
               history="history 1"
-              video_url="Video Url 1"
+              url_video="Video Url 1"
               category_id="1"/>
     <projects id="2"
               name="name 2"
@@ -18,7 +18,7 @@
               need_money="1000"
               days_left="30"
               history="history 2"
-              video_url="Video Url 2"
+              url_video="Video Url 2"
               category_id="1"/>
 
     <payment_options description="New Description"
