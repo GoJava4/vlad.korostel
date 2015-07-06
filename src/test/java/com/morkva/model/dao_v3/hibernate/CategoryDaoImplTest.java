@@ -27,7 +27,7 @@ import java.util.List;
         DependencyInjectionTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
-@DatabaseSetup(value = "classpath:categoryTest/sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
 public class CategoryDaoImplTest {
 
     @Autowired

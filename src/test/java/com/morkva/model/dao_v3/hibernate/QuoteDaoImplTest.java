@@ -25,7 +25,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
         DependencyInjectionTestExecutionListener.class,
         DbUnitTestExecutionListener.class
 })
-@DatabaseSetup(value = "classpath:quoteTest/sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
+@DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
 public class QuoteDaoImplTest {
 
     @Autowired

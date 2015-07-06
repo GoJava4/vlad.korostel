@@ -17,11 +17,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 /**
  * Created by koros on 30.06.2015.
  */
-@RunWith(MockitoJUnitRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-test.xml"})
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-})
 public class QuoteServiceTest {
 
     @Mock
