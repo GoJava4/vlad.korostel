@@ -36,8 +36,4 @@ public class Category {
         return id;
     }
 
-    protected void setId(Integer id) {
-        this.id = id;
-    }
-
 }

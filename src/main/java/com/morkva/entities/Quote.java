@@ -43,12 +43,4 @@ public class Quote {
     public void setAuthor(String author) {
         this.author = author;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

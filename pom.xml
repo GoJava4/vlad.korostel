@@ -56,36 +56,72 @@
                     <path>/${project.final.name}</path>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+                <configuration>
+                    <hostname>192.168.1.241</hostname>
+                    <port>9990</port>
+                    <username>admin</username>
+                    <password>rjhjcntkm</password>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
         <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>servlet-api</artifactId>-->
+            <!--</exclusion>-->
+            <!--<exclusion>-->
+            <!--<groupId>javax.servlet.jsp</groupId>-->
+            <!--<artifactId>jsp-api</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+
+        <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>3.0-alpha-1</version>
-            <scope>provided</scope>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
         </dependency>
+
         <dependency>
-            <groupId>javaee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>5</version>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
         </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-        </dependency>
+
+        <!-- DB -->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
+
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <!-- SPRING -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -105,12 +141,6 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
@@ -121,15 +151,26 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>2.5</version>
+            <version>${spring.version}</version>
+            <scope>test</scope>
         </dependency>
+
+        <!-- TEST -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.4</version>
+            <version>4.9</version>
             <scope>test</scope>
         </dependency>
 
@@ -153,9 +194,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- HIBERNATE -->
 
-
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.10.Final</version>
+        </dependency>
     </dependencies>
 
 

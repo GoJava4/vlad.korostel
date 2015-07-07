@@ -50,8 +50,4 @@ public class PaymentOption {
     public Integer getId() {
         return id;
     }
-
-    protected void setId(Integer id) {
-        this.id = id;
-    }
 }

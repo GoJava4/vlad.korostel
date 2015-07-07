@@ -32,6 +32,7 @@ public class Project {
 
     @Column(name = "days_left")
     private int daysLeft;
+
     private String history;
 
     @Column(name = "url_video")
@@ -106,9 +107,5 @@ public class Project {
 
     public Integer getId() {
         return id;
-    }
-
-    protected void setId(Integer id) {
-        this.id = id;
     }
 }

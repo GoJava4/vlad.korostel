@@ -11,10 +11,10 @@
        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
               <property name="maxActive" value="10"/>
               <property name="maxWait" value="10"/>
-              <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-              <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goittst"/>
-              <property name="username" value="cakehost_goittst"/>
-              <property name="password" value="jqbueb72"/>
+              <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+              <property name="url" value="jdbc:hsqldb:mem:paging"/>
+              <property name="username" value="sa"/>
+              <property name="password" value=""/>
        </bean>
 
        <bean id="transactionManager"
