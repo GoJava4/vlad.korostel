@@ -24,9 +24,7 @@
         <h1>Categories</h1>
         <ul>
             <c:forEach var="category" items="${list}">
-                <c:url value="/category" var="categoryURL">
-                    <c:param name="category-id" value="${category.id}"/>
-                </c:url>
+                <c:url value="/category/${category.id}" var="categoryURL"/>
                 <li>
                     <h2>
                         <a href="${categoryURL}">${category.name}</a>

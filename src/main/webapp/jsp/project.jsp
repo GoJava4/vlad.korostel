@@ -15,10 +15,13 @@
 <h3>${current_project.history}</h3>
 <h3>${current_project.urlVideo}</h3>
 <br/>
-<form action="<c:url value="/project"/>" method="post">
+<c:url var="pr" value="/project">
+    <c:param name="projectId" value="${project.id}"/>
+</c:url>
+<form action="${pr}" method="post">
     <label>
         Doanate:
-        <input type="text" name="donate-count"/>
+        <input type="text" name="donateCount"/>
     </label>
 
     <input type="submit" value="DONATE!">

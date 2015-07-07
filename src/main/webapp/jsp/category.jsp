@@ -14,7 +14,7 @@
     <%--@elvariable id="projects" type="java.util.List<com.morkva.entities.Project>"--%>
     <c:forEach var="prject" items="${projects}">
         <c:url value="/project" var="projectURL">
-            <c:param name="project-id" value="${prject.id}"/>
+            <c:param name="projectId" value="${prject.id}"/>
         </c:url>
         <li>
             <h2>
