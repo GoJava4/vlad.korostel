@@ -1,20 +1,40 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao_v2.Identified;
+import javax.persistence.*;
 
 /**
  * Created by vladyslav on 02.05.15.
  */
-public class Project implements Identified<Integer> {
 
+@Entity
+@Table(name = "projects")
+public class Project {
+
+
+    @Id
+    @GeneratedValue
     private Integer id;
-    private Integer categoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     private String name;
+
+    @Column(name = "short_description")
     private String shortDescr;
+
+    @Column(name = "need_money")
     private int needMoney;
+
+    @Column(name = "current_money")
     private int currentMoney;
+
+    @Column(name = "days_left")
     private int daysLeft;
     private String history;
+
+    @Column(name = "url_video")
     private String urlVideo;
 
     public Project() {
@@ -28,12 +48,12 @@ public class Project implements Identified<Integer> {
         this.name = name;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getShortDescr() {
@@ -84,7 +104,6 @@ public class Project implements Identified<Integer> {
         this.urlVideo = urlVideo;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }

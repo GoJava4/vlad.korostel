@@ -1,12 +1,19 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao_v2.Identified;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by vladyslav on 02.05.15.
  */
-public class Category implements Identified<Integer> {
+@Entity
+@Table(name = "categories")
+public class Category {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
 
@@ -25,7 +32,6 @@ public class Category implements Identified<Integer> {
         this.name = name;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }

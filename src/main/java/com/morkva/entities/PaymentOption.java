@@ -1,16 +1,24 @@
 package com.morkva.entities;
 
-import com.morkva.model.dao_v2.Identified;
+import javax.persistence.*;
 
 /**
  * Created by vladyslav on 29.05.15.
  */
-public class PaymentOption implements Identified<Integer> {
+@Entity
+@Table(name = "payment_options")
+public class PaymentOption {
 
+
+    @Id
+    @GeneratedValue
     private Integer id;
     private String description;
     private Integer value;
-    private Integer projectId;
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     public PaymentOption() {
     }
@@ -31,15 +39,14 @@ public class PaymentOption implements Identified<Integer> {
         this.value = value;
     }
 
-    public Integer getProjectId() {
-        return projectId;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }

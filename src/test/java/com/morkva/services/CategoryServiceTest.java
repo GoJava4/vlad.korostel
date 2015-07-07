@@ -1,7 +1,7 @@
 package com.morkva.services;
 
 import com.morkva.entities.Category;
-import com.morkva.model.dao_v2.CategoryDao;
+import com.morkva.model.dao_v3.CategoryDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,16 +1,11 @@
+###################################
+# CREATE TABLES
+###################################
+
 CREATE TABLE IF NOT EXISTS categories
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(255)
-)ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS payment_options
-(
-  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  description LONGTEXT NOT NULL,
-  value INT NOT NULL,
-  project_id INT NOT NULL,
-  FOREIGN KEY (project_id) REFERENCES projects(id)
 )ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS projects
@@ -22,7 +17,7 @@ CREATE TABLE IF NOT EXISTS projects
   need_money INTEGER,
   days_left INTEGER,
   history LONGTEXT,
-  video_url VARCHAR(255),
+  url_video VARCHAR(255),
   category_id INTEGER,
 
   FOREIGN KEY (category_id) REFERENCES categories(id)
@@ -56,7 +51,7 @@ INSERT INTO categories(name) VALUES ('Category 1'), ('Category 2'), ('Category 3
 #PROJECTS
 #--------------------------------
 INSERT INTO projects
-(name, short_description, current_money, need_money, days_left, history, video_url, category_id)
+(name, short_description, current_money, need_money, days_left, history, url_video, category_id)
 VALUES
   ('name 1', 'short deskr 1', 1000, 5000, 30, 'history 1', 'video url 1', 1),
   ('name 2', 'short deskr 2', 1000, 5000, 30, 'history 2', 'video url 2', 1),

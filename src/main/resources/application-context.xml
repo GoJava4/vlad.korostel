@@ -1,47 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-       <context:annotation-config/>
-       <context:component-scan base-package="com.morkva"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.morkva"/>
+    <tx:annotation-driven/>
 
-       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-              <property name="maxActive" value="10"/>
-              <property name="maxWait" value="10"/>
-              <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-              <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goit"/>
-              <property name="username" value="cakehost_goit"/>
-              <property name="password" value="975w736h"/>
-       </bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="maxActive" value="10"/>
+        <property name="maxWait" value="10"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://cakehost.mysql.ukraine.com.ua:3306/cakehost_goit"/>
+        <property name="username" value="cakehost_goit"/>
+        <property name="password" value="975w736h"/>
+    </bean>
 
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+    </bean>
 
-       <bean id="nullFixedJdbcTemplate" class="com.morkva.model.dao_v2.utils.FixedNullJdbcTemplate">
-              <constructor-arg ref="dataSource"/>
-       </bean>
-
-       <bean id="categoryDAO" class="com.morkva.model.dao_v2.templates.CategoryJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="quoteDAO" class="com.morkva.model.dao_v2.templates.QuoteJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="projectDAO" class="com.morkva.model.dao_v2.templates.ProjectJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="paymentOptionDao" class="com.morkva.model.dao_v2.templates.PaymentOptionJDBCTemplate">
-              <property name="jdbcTemplate" ref="nullFixedJdbcTemplate"/>
-       </bean>
-
-       <bean id="categoryService" class="com.morkva.services.CategoryService"/>
-
-       <bean id="quoteService" class="com.morkva.services.QuoteService"/>
-
-       <bean id="projectService" class="com.morkva.services.ProjectService"/>
-
-       <bean id="paymentOptionService" class="com.morkva.services.PaymentOptionService"/>
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>

@@ -5,7 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v2.ProjectDao;
+import com.morkva.model.dao_v3.ProjectDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,13 +25,6 @@ import java.util.LinkedList;
 /**
  * Created by koros on 30.06.2015.
  */
-@RunWith(MockitoJUnitRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-test.xml"})
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-        DbUnitTestExecutionListener.class
-})
-@DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
 public class ProjectServiceTest {
 
     @Mock

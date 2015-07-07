@@ -1,6 +1,6 @@
 package com.morkva.services;
 
-import com.morkva.model.dao_v2.QuoteDao;
+import com.morkva.model.dao_v3.QuoteDao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,11 +17,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 /**
  * Created by koros on 30.06.2015.
  */
-@RunWith(MockitoJUnitRunner.class)
-@ContextConfiguration(locations = {"classpath:application-context-test.xml"})
-@TestExecutionListeners({
-        DependencyInjectionTestExecutionListener.class,
-})
 public class QuoteServiceTest {
 
     @Mock
