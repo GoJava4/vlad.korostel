@@ -1,7 +1,7 @@
 package com.morkva.services;
 
 import com.morkva.entities.Quote;
-import com.morkva.model.dao_v3.QuoteDao;
+import com.morkva.model.dao.QuoteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

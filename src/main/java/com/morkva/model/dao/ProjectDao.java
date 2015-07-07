@@ -1,4 +1,4 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;

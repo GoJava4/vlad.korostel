@@ -1,4 +1,4 @@
-package com.morkva.model.dao_v3;
+package com.morkva.model.dao;
 
 /**
  * Created by koros on 29.06.2015.

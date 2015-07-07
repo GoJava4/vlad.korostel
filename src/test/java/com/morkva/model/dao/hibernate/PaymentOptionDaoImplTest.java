@@ -1,4 +1,4 @@
-package com.morkva.model.dao_v3.hibernate;
+package com.morkva.model.dao.hibernate;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
@@ -7,8 +7,8 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.morkva.entities.PaymentOption;
 import com.morkva.entities.Project;
-import com.morkva.model.dao_v3.PaymentOptionDao;
-import com.morkva.model.dao_v3.ProjectDao;
+import com.morkva.model.dao.PaymentOptionDao;
+import com.morkva.model.dao.ProjectDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

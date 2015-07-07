@@ -1,12 +1,12 @@
-package com.morkva.model.dao_v3.hibernate;
+package com.morkva.model.dao.hibernate;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
-import com.morkva.entities.Category;
-import com.morkva.model.dao_v3.CategoryDao;
+import com.morkva.entities.Quote;
+import com.morkva.model.dao.QuoteDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +16,8 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
-import java.util.List;
-
 /**
- * Created by koros on 06.07.2015.
+ * Created by koros on 05.07.2015.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context-test.xml"})
@@ -28,55 +26,58 @@ import java.util.List;
         DbUnitTestExecutionListener.class
 })
 @DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
-public class CategoryDaoImplTest {
+public class QuoteDaoImplTest {
 
     @Autowired
-    CategoryDao categoryDao;
+    QuoteDao quoteDao;
 
     @Test
-    public void testGetAll() throws Exception {
-        List<Category> all = categoryDao.getAll();
-        Assert.assertTrue(all.size() > 1);
+    public void testGetRandom() throws Exception {
+        Quote random = quoteDao.getRandom();
+        Assert.assertNotNull(random);
     }
+
 
     @Test
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedCreateData.xml",
+            value = "classpath:quoteTest/expectedCreateData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "categories"
+            table = "quotes"
     )
     public void testCreate() throws Exception {
-        Category category = new Category("New Name");
-        categoryDao.create(category);
+        Quote quote = new Quote("New Value", "New Author");
+        quoteDao.create(quote);
     }
 
     @Test
     public void testGetById() throws Exception {
-        Category byId = categoryDao.getById(1);
+        Quote byId = quoteDao.getById(1);
         Assert.assertNotNull(byId);
-        Assert.assertEquals("name 1", byId.getName());
+        Assert.assertEquals("value 1", byId.getValue());
+        Assert.assertEquals("author 1", byId.getAuthor());
     }
 
     @Test
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedUpdateData.xml",
+            value = "classpath:quoteTest/expectedUpdateData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "categories"
+            table = "quotes"
     )
     public void testUpdate() throws Exception {
-        Category byId = categoryDao.getById(3);
-        byId.setName("Updated Name");
-        categoryDao.update(byId);
+        Quote quoteToUpdate = quoteDao.getById(3);
+        quoteToUpdate.setValue("Updated Value");
+        quoteToUpdate.setAuthor("Updated Author");
+        quoteDao.update(quoteToUpdate);
     }
 
     @Test
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedDeleteData.xml",
+            value = "classpath:quoteTest/expectedDeleteData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "categories"
+            table = "quotes"
     )
     public void testDelete() throws Exception {
-        Category byId = categoryDao.getById(3);
-        categoryDao.delete(byId);
+        Quote quoteToDelete = quoteDao.getById(3);
+        quoteDao.delete(quoteToDelete);
     }
 }

@@ -1,6 +1,6 @@
-package com.morkva.model.dao_v3.hibernate;
+package com.morkva.model.dao.hibernate;
 
-import com.morkva.model.dao_v3.Dao;
+import com.morkva.model.dao.Dao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
