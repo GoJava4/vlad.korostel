@@ -10,14 +10,14 @@
 <html>
 <head>
     <title>TITLE</title>
-    <link href="<c:url value="/css/bootstrap.min.css"/>"
-          rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
 </head>
 <body>
 <%--@elvariable id="list" type="java.util.List<com.morkva.entities.Category>"--%>
 <%--@elvariable id="quote" type="com.morkva.entities.Quote"--%>
 <c:set var="qt" value="${quote}"/>
 <div class="container">
+    <jsp:include page="menu.jsp"/>
     <div class="panel panel-default">
         <h1>"<c:out value="${qt.value}"/>" - <c:out value="${qt.author}"/></h1>
 

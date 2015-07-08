@@ -39,4 +39,9 @@ public class CategoryController {
 
         return "category.jsp";
     }
+
+    @RequestMapping(value = "/{categoryId}/add", method = RequestMethod.GET)
+    public String addCategory(ModelMap modelMap, @PathVariable int categoryId) {
+        return "404.jsp";
+    }
 }
