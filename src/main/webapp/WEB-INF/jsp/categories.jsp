@@ -18,6 +18,7 @@
 <c:set var="qt" value="${quote}"/>
 <div class="container">
     <jsp:include page="menu.jsp"/>
+    <c:import url="menu.jsp"
     <div class="panel panel-default">
         <h1>"<c:out value="${qt.value}"/>" - <c:out value="${qt.author}"/></h1>
 
