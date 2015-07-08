@@ -18,25 +18,12 @@
 <%--@elvariable id="list" type="java.util.List<com.morkva.entities.Category>"--%>
 <%--@elvariable id="quote" type="com.morkva.entities.Quote"--%>
 <c:set var="qt" value="${quote}"/>
-<c:set var="categories" value="${list}" scope="application"/>
 <div class="container">
     <jsp:include page="menu.jsp">
-        <jsp:param name="activeLink" value="categories"/>
+        <jsp:param name="activeLink" value="contacts"/>
     </jsp:include>
     <div class="panel panel-default">
-        <h1>"<c:out value="${qt.value}"/>" - <c:out value="${qt.author}"/></h1>
-
-        <h1>Categories</h1>
-        <ul>
-            <c:forEach var="category" items="${categories}">
-                <c:url value="/category/${category.id}" var="categoryURL"/>
-                <li>
-                    <h2>
-                        <a href="${categoryURL}">${category.name}</a>
-                    </h2>
-                </li>
-            </c:forEach>
-        </ul>
+        CONTACTS =)
     </div>
 </div>
 </body>
