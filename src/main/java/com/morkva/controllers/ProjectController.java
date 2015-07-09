@@ -1,4 +1,4 @@
-package com.morkva.servlets;
+package com.morkva.controllers;
 
 import com.morkva.entities.Project;
 import com.morkva.services.ProjectService;

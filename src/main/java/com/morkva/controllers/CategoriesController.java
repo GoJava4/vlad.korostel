@@ -1,4 +1,4 @@
-package com.morkva.servlets;
+package com.morkva.controllers;
 
 import com.morkva.services.CategoryService;
 import com.morkva.services.QuoteService;

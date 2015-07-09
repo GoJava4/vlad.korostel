@@ -1,9 +1,7 @@
 package com.morkva.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by vladyslav on 02.05.15.
@@ -16,6 +14,9 @@ public class Category {
     @GeneratedValue
     private Integer id;
     private String name;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Project> projects;
 
     public Category() {
     }
@@ -30,6 +31,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public Integer getId() {
