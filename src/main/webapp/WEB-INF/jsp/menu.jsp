@@ -40,7 +40,6 @@
                     </button>
                 </security:authorize>
                 <security:authorize access="isAuthenticated()">
-                    asdasd
                     <p><a class="btn btn-lg btn-danger" href="<c:url value="/logout"/>" role="button">Log
                         out</a></p>
                 </security:authorize>

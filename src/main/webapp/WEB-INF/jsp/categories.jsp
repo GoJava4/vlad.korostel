@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,16 +26,33 @@
         <h1>"<c:out value="${qt.value}"/>" - <c:out value="${qt.author}"/></h1>
 
         <h1>Categories</h1>
-        <ul>
-            <c:forEach var="category" items="${categories}">
-                <c:url value="/category/${category.id}" var="categoryURL"/>
-                <li>
-                    <h2>
-                        <a href="${categoryURL}">${category.name}</a>
-                    </h2>
-                </li>
-            </c:forEach>
-        </ul>
+        <table>
+            <tbody>
+                <c:forEach var="category" items="${categories}">
+                    <tr>
+                    <c:url value="/category/${category.id}" var="categoryURL"/>
+                        <form>
+                            <td>
+                                <a href="${categoryURL}">${category.name}</a>
+                            </td>
+                            <td class="text-right">
+                                <security:authorize access="hasRole('ROLE_ADMIN')">
+                                    <%--<button class="btn btn-xs btn-primary" formmethod="get"--%>
+                                            <%--formaction='/category/<c:out value="${category.id}"/>/edit' type="submit">--%>
+                                        <%--<span class="glyphicon glyphicon-pencil"></span>--%>
+                                    <%--</button>--%>
+
+                                    <button class="btn btn-xs btn-danger" formmethod="post"
+                                            formaction='<c:url value="/category/${category.id}/delete"/>' type="submit">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </security:authorize>
+                            </td>
+                        </form>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

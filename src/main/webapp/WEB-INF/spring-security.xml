@@ -7,33 +7,33 @@
                  http://www.springframework.org/schema/security
                  http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-    <beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
-        <beans:constructor-arg ref="roleHierarchy" />
-    </beans:bean>
+    <!--<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">-->
+        <!--<beans:constructor-arg ref="roleHierarchy" />-->
+    <!--</beans:bean>-->
 
-    <beans:bean id="roleHierarchy"
-                class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
-        <beans:property name="hierarchy">
-            <beans:value>
-                ROLE_ADMIN > ROLE_USER
-                ROLE_USER > ROLE_ANONYMOUS
-            </beans:value>
-        </beans:property>
-    </beans:bean>
+    <!--<beans:bean id="roleHierarchy"-->
+                <!--class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">-->
+        <!--<beans:property name="hierarchy">-->
+            <!--<beans:value>-->
+                <!--ROLE_ADMIN > ROLE_USER-->
+                <!--ROLE_USER > ROLE_ANONYMOUS-->
+            <!--</beans:value>-->
+        <!--</beans:property>-->
+    <!--</beans:bean>-->
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/categories" access="permitAll"/>
+        <intercept-url pattern="/category*" access="permitAll"/>
+        <intercept-url pattern="/category**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/project*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <logout logout-url="/logout"
                 logout-success-url="/categories"/>
-
-        <!--<form-login login-page="/servlet/login"-->
-                    <!--default-target-url="/servlet/home"-->
+        <form-login default-target-url="/categories" always-use-default-target="true"/>
+        <!--<form-login login-page="/login"-->
+                    <!--default-target-url="/categories"-->
                     <!--always-use-default-target="true"/>-->
-        <!--<logout logout-url="/logout"-->
-                <!--logout-success-url="/servlet/home"/>-->
-        <!--<anonymous username="guest"-->
-                   <!--granted-authority="ROLE_ANONYMOUS"/>-->
+        <anonymous username="guest"
+                   granted-authority="ROLE_ANONYMOUS"/>
         <csrf disabled="true"/>
 
     </http>
@@ -43,7 +43,8 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="admin" password="123456" authorities="ROLE_ADMIN"/>
+                <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+                <user name="user" password="user" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>

@@ -44,4 +44,11 @@ public class CategoryController {
     public String addCategory(ModelMap modelMap, @PathVariable int categoryId) {
         return "404.jsp";
     }
+
+    @RequestMapping(value = "/{categoryId}/delete", method = RequestMethod.POST)
+    public String deleteCategory(ModelMap modelMap, @PathVariable int categoryId) {
+        Category category = categoryService.getById(categoryId);
+        categoryService.delete(category);
+        return "redirect:/categories";
+    }
 }

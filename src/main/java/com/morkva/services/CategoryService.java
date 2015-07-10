@@ -25,4 +25,8 @@ public class CategoryService {
     public Category getById(Integer categoryId) {
         return categoryDAO.getById(categoryId);
     }
+
+    public void delete(Category category) {
+        categoryDAO.delete(category);
+    }
 }
