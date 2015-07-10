@@ -21,7 +21,6 @@ public class CategoryDaoImpl extends AbstractDao<Category> implements CategoryDa
     @Override
     public List<Category> getAll() {
         Session currentSession = sessionFactory.getCurrentSession();
-        System.err.println("CURRENT SESSION = " + currentSession);
         return currentSession.createCriteria(Category.class).addOrder(Order.asc("name")).list();
     }
 }
