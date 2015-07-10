@@ -4,13 +4,11 @@ import com.morkva.entities.Quote;
 import com.morkva.model.dao.QuoteDao;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by koros on 05.07.2015.
  */
 @Repository("quoteDao")
-@Transactional
 public class QuoteDaoImpl extends AbstractDao<Quote> implements QuoteDao {
 
 

@@ -3,13 +3,13 @@ package com.morkva.model.dao.hibernate;
 import com.morkva.model.dao.Dao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by koros on 06.07.2015.
  */
-@Transactional
-public class AbstractDao<T> implements Dao<T> {
+@Component
+public abstract class AbstractDao<T> implements Dao<T> {
 
     @Autowired
     protected SessionFactory sessionFactory;
