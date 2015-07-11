@@ -10,5 +10,7 @@
         <mapping class="com.morkva.entities.Project"/>
         <mapping class="com.morkva.entities.Category"/>
         <mapping class="com.morkva.entities.PaymentOption"/>
+        <mapping class="com.morkva.entities.User"/>
+        <mapping class="com.morkva.entities.UserRole"/>
     </session-factory>
 </hibernate-configuration>
