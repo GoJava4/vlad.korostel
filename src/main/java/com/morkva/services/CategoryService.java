@@ -8,9 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by koros on 30.06.2015.
- */
 @Service("categoryService")
 @Transactional
 public class CategoryService {

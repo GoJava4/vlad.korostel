@@ -31,10 +31,8 @@
         <intercept-url pattern="/project*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <logout logout-url="/logout"
                 logout-success-url="/categories"/>
-        <form-login default-target-url="/categories" always-use-default-target="true"/>
-        <!--<form-login login-page="/login"-->
-                    <!--default-target-url="/categories"-->
-                    <!--always-use-default-target="true"/>-->
+        <!-- SO FUN =) -->
+        <form-login authentication-failure-url="http://cdn.alltheragefaces.com/img/faces/large/fuck-yeah-gtfo-l.png"/>
         <anonymous username="guest"
                    granted-authority="ROLE_ANONYMOUS"/>
         <csrf disabled="true"/>
@@ -54,28 +52,9 @@
 
     <beans:bean id="userDetailsService" class="com.morkva.services.UserDetailsServiceImpl"/>
 
-    <beans:bean id='daoAuthenticationProvider'
-                class='org.springframework.security.authentication.dao.DaoAuthenticationProvider'>
-        <beans:property name='userDetailsService' ref='userDetailsService' />
-    </beans:bean>
-
-    <beans:bean id='authenticationManager'
-                class='org.springframework.security.authentication.ProviderManager'>
-        <beans:constructor-arg>
-            <beans:list>
-                <beans:ref local="daoAuthenticationProvider"/>
-            </beans:list>
-        </beans:constructor-arg>
-    </beans:bean>
-
     <authentication-manager>
-        <authentication-provider user-service-ref='userDetailsService'>
-            <password-encoder hash='plaintext' />
-        </authentication-provider>
+        <authentication-provider user-service-ref="userDetailsService"/>
     </authentication-manager>
-    <!--<authentication-manager>-->
-        <!--<authentication-provider user-service-ref="userDetailsService"/>-->
-    <!--</authentication-manager>-->
 
     <!--<beans:bean id="webSecurityExpressionHandler"-->
                 <!--class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />-->

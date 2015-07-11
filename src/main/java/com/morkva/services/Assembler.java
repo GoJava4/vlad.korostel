@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by koros on 11.07.2015.
- */
 @Service("assembler")
 public class Assembler {
     User buildUserFromUserEntity(com.morkva.entities.User userEntity) {
