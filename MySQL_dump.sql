@@ -12,15 +12,19 @@ CREATE TABLE IF NOT EXISTS projects
 (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(255),
-  short_description LONGTEXT,
+  short_description TEXT,
   current_money INTEGER,
   need_money INTEGER,
-  days_left INTEGER,
-  history LONGTEXT,
-  url_video VARCHAR(255),
+  adding_date DATETIME,
+  ending_date DATETIME,
   category_id INTEGER,
+  user_id INTEGER,
+  full_description_id INTEGER,
+  successfully_finished BOOLEAN,
 
-  FOREIGN KEY (category_id) REFERENCES categories(id)
+  FOREIGN KEY (category_id) REFERENCES categories(id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (full_description_id) REFERENCES full_descriptions(id)
 )ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS quotes
@@ -75,6 +79,7 @@ CREATE TABLE IF NOT EXISTS payment_statuses (
 CREATE TABLE IF NOT EXISTS payments (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   amount DOUBLE NOT NULL,
+  date DATETIME,
   project_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
   status_id INTEGER NOT NULL,

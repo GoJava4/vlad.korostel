@@ -21,6 +21,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,15 +55,20 @@ public class ProjectDaoImplTest {
     public void testCreate() throws Exception {
         Category category = categoryDao.getById(1);
 
-        Project project = new Project();
-        project.setName("New Name");
-        project.setShortDescr("New Short Description");
-        project.setCurrentMoney(1000);
-        project.setNeedMoney(16000);
-        project.setDaysLeft(45);
-        project.setHistory("New History");
-        project.setUrlVideo("New Video Url");
-        project.setCategory(category);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        Project project = new Project.Builder()
+                .setName("New Name")
+                .setName("New Name")
+                .setShortDescr("New Short Description")
+                .setCurrentMoney(1000)
+                .setNeedMoney(16000)
+                .setAddingDate(format.parse("2014-12-10 00:00:00"))
+                .setEndingDate(format.parse("2015-12-06 14:23:18"))
+                .setCategory(category)
+                .setFullDescription(fullDescr)
+                .setSuccessfullyFinished(false)
+                .build();
         projectDao.create(project);
     }
     @Test

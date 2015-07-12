@@ -1,6 +1,7 @@
 package com.morkva.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "payments")
@@ -11,6 +12,9 @@ public class Payment {
     private Integer id;
 
     private double amount;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "project_id")
@@ -41,6 +45,14 @@ public class Payment {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Project getProject() {

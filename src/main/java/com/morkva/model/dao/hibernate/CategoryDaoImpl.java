@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by koros on 06.07.2015.
- */
 @Repository("categoryDao")
 public class CategoryDaoImpl extends AbstractDao<Category> implements CategoryDao {
 

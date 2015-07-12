@@ -1,7 +1,6 @@
 package com.morkva.entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by koros on 11.07.2015.
@@ -15,13 +14,11 @@ public class User {
 
     private String login;
     private String password;
-    private boolean active;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Project> projects;
 
     @ManyToOne @JoinColumn(name = "role_id")
     private UserRole role;
+
+    private boolean active;
 
     private String username;
 
@@ -95,13 +92,5 @@ public class User {
 
     public void setPersonalInfo(String personalInfo) {
         this.personalInfo = personalInfo;
-    }
-
-    public List<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
     }
 }
