@@ -13,6 +13,6 @@ public class ContactsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showContacts() {
-        return "contacts.jsp";
+        return "contacts";
     }
 }

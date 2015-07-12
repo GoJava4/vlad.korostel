@@ -26,6 +26,6 @@ public class CategoriesController {
 
         model.addAttribute("quote", quoteService.getRandom());
         model.addAttribute("list", categoryService.getAll());
-        return "categories.jsp";
+        return "categories";
     }
 }

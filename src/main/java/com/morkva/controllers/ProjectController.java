@@ -24,7 +24,7 @@ public class ProjectController {
         Project project = projectService.getById(projectId);
         modelMap.addAttribute("project", project);
 
-        return "project.jsp";
+        return "project";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -35,7 +35,7 @@ public class ProjectController {
         donate(project, donateCount);
 
         modelMap.addAttribute("project", project);
-        return "project.jsp";
+        return "project";
     }
 
     private void donate(Project project, Integer donateCount) {

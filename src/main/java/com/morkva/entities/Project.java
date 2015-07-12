@@ -35,6 +35,10 @@ public class Project {
 
     private String history;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @Column(name = "url_video")
     private String urlVideo;
 
@@ -107,5 +111,13 @@ public class Project {
 
     public Integer getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -2,6 +2,7 @@ package com.morkva.controllers;
 
 import com.morkva.entities.Category;
 import com.morkva.entities.Project;
+import com.morkva.exceptions.NotFound404Exception;
 import com.morkva.services.CategoryService;
 import com.morkva.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,15 @@ public class CategoryController {
         modelMap.addAttribute("category_name", category.getName());
         modelMap.addAttribute("category_id", categoryId);
 
-        return "category.jsp";
+        return "category";
     }
 
     @RequestMapping(value = "/{categoryId}/add", method = RequestMethod.GET)
     public String addCategory(ModelMap modelMap, @PathVariable int categoryId) {
-        return "404.jsp";
+        if (categoryService.getById(categoryId) == null) {
+            throw new NotFound404Exception();
+        }
+        return "category";
     }
 
     @RequestMapping(value = "/{categoryId}/delete", method = RequestMethod.POST)
