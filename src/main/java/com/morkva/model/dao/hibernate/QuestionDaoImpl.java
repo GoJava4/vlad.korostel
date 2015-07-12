@@ -6,9 +6,11 @@ import com.morkva.model.dao.QuestionDao;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("questionDao")
 public class QuestionDaoImpl extends AbstractDao<Question> implements QuestionDao {
 
     public QuestionDaoImpl() {

@@ -7,9 +7,11 @@ import com.morkva.model.dao.PaymentDao;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("paymentDao")
 public class PaymentDaoImpl extends AbstractDao<Payment> implements PaymentDao {
 
     public PaymentDaoImpl() {

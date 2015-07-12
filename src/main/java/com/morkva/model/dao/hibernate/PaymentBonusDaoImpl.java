@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("payment")
+@Repository("paymentBonusDao")
 public class PaymentBonusDaoImpl extends AbstractDao<PaymentBonus> implements PaymentBonusDao {
 
     public PaymentBonusDaoImpl() {
