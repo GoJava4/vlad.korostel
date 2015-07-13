@@ -2,7 +2,10 @@ package com.morkva.controllers;
 
 import com.morkva.entities.Project;
 import com.morkva.services.ProjectService;
+import com.morkva.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,9 @@ public class ProjectController {
     @Autowired
     ProjectService projectService;
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String showProject(ModelMap modelMap, @RequestParam int projectId) {
         Project project = projectService.getById(projectId);
@@ -32,16 +38,13 @@ public class ProjectController {
 
         Project project = projectService.getById(projectId);
 
-        donate(project, donateCount);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        com.morkva.entities.User userByLogin = userDetailsService.getUserByLogin(user.getUsername());
+
+        projectService.donate(project, donateCount, userByLogin);
 
         modelMap.addAttribute("project", project);
         return "project";
-    }
-
-    private void donate(Project project, Integer donateCount) {
-        if (donateCount != null) {
-            project.setCurrentMoney(project.getCurrentMoney() + donateCount);
-            projectService.update(project);
-        }
     }
 }

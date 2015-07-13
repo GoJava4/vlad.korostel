@@ -23,6 +23,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
+    public User getUserByLogin(String login) {
+        return userDao.getByLogin(login);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         Assembler assembler = new Assembler();

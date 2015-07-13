@@ -19,11 +19,11 @@
 
         <h3>${current_project.currentMoney}</h3>
 
-        <h3>${current_project.daysLeft}</h3>
+        <h3>${current_project.addingDate}</h3>
 
-        <h3>${current_project.history}</h3>
+        <h3>${current_project.endingDate}</h3>
 
-        <h3>${current_project.urlVideo}</h3>
+        <h3>${current_project.user}</h3>
         <br/>
         <c:url var="pr" value="/project">
             <c:param name="projectId" value="${project.id}"/>

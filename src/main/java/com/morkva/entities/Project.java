@@ -42,7 +42,6 @@ public class Project {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "full_description_id")
     @OneToOne
     @JoinColumn(name = "full_description_id")
     private FullDescription fullDescription;
@@ -182,5 +181,49 @@ public class Project {
         public Project build() {
             return new Project(this);
         }
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setShortDescr(String shortDescr) {
+        this.shortDescr = shortDescr;
+    }
+
+    public void setCurrentMoney(int currentMoney) {
+        this.currentMoney = currentMoney;
+    }
+
+    public void setNeedMoney(int needMoney) {
+        this.needMoney = needMoney;
+    }
+
+    public void setAddingDate(Date addingDate) {
+        this.addingDate = addingDate;
+    }
+
+    public void setEndingDate(Date endingDate) {
+        this.endingDate = endingDate;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setFullDescription(FullDescription fullDescription) {
+        this.fullDescription = fullDescription;
+    }
+
+    public void setSuccessfullyFinished(boolean successfullyFinished) {
+        this.successfullyFinished = successfullyFinished;
     }
 }

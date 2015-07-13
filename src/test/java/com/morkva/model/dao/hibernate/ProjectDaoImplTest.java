@@ -22,7 +22,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -66,7 +65,7 @@ public class ProjectDaoImplTest {
                 .setAddingDate(format.parse("2014-12-10 00:00:00"))
                 .setEndingDate(format.parse("2015-12-06 14:23:18"))
                 .setCategory(category)
-                .setFullDescription(fullDescr)
+//                .setFullDescription(fullDescr)
                 .setSuccessfullyFinished(false)
                 .build();
         projectDao.create(project);

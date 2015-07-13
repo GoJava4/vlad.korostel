@@ -3,6 +3,9 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <div class="navbar navbar-default">
     <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">Kickstarter</a>
+        </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <c:set var="css" value="active"/>
